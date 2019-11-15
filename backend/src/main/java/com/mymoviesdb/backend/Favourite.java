@@ -16,6 +16,10 @@ public class Favourite {
     @Column
     private Long mid;
 
+    public Favourite() {
+
+    }
+
     public Favourite(Person person, Long mid) {
         this.person = person;
         this.mid = mid;

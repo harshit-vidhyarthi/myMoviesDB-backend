@@ -40,9 +40,15 @@ public class FavouriteDAO {
         // get the current hibernate session
         Session currentSession = entityManager.unwrap(Session.class);
 
-        Favourite f = new Favourite(personService.findPersonById(pid), mid);
+        Query theQuery = currentSession.createQuery("delete from Favourite where pid=:personid and mid=:movieid");
+        theQuery.setParameter("personid", pid);
+        theQuery.setParameter("movieid", mid);
 
-        // save employee
-        currentSession.saveOrUpdate(f);
+        if(theQuery.executeUpdate() == 0) {
+            Favourite f = new Favourite(personService.findPersonById(pid), mid);
+
+            // save employee
+            currentSession.saveOrUpdate(f);
+        }
     }
 }
