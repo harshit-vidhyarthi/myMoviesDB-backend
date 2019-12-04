@@ -1,3 +1,3 @@
 # MyMoviesDB
 
-Backend files
+Backend files for my movie website
